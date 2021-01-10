@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.SaveCallback;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,9 +52,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void done(ParseException e) {
                 if (e == null){
-                    Toast.makeText(MainActivity.this,  kickBoxer.get("name") + " object is saved successfully", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(MainActivity.this,  kickBoxer.get("name") + " object is saved successfully", Toast.LENGTH_LONG).show();
+                    FancyToast.makeText(MainActivity.this,kickBoxer.get("name") + " object is saved successfully",FancyToast.LENGTH_LONG,FancyToast.SUCCESS,true).show();
                 }else{
-                    Toast.makeText(MainActivity.this,  "Kick-boxer object is not saved successfully", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(MainActivity.this,  "Kick-boxer object is not saved successfully", Toast.LENGTH_LONG).show();
+                    FancyToast.makeText(MainActivity.this,"Kick-boxer object is not saved successfully",FancyToast.LENGTH_LONG,FancyToast.ERROR,true).show();
                 }
             }
         });
