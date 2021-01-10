@@ -35,30 +35,33 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void fnClickSaveResult(View View){
-        int  KickPower = Integer.parseInt(editKickPower.getText().toString());
-        int  KickSpeed = Integer.parseInt(editKickSpeed.getText().toString());
-        int  PunchPower = Integer.parseInt(editPunchPower.getText().toString());
-        int  PunchSpeed = Integer.parseInt(editPunchSpeed.getText().toString());
-        String name = editName.getText().toString();
+    public void fnClickSaveResult(View View) {
+        try {
+            int KickPower = Integer.parseInt(editKickPower.getText().toString());
+            int KickSpeed = Integer.parseInt(editKickSpeed.getText().toString());
+            int PunchPower = Integer.parseInt(editPunchPower.getText().toString());
+            int PunchSpeed = Integer.parseInt(editPunchSpeed.getText().toString());
+            String name = editName.getText().toString();
 
-        ParseObject kickBoxer = new ParseObject("KickBoxer");
-        kickBoxer.put("name", name);
-        kickBoxer.put("kick_speed", KickSpeed);
-        kickBoxer.put("kick_power", KickPower);
-        kickBoxer.put("punch_power", PunchPower);
-        kickBoxer.put("punch_speed", PunchSpeed);
-        kickBoxer.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                if (e == null){
+            ParseObject kickBoxer = new ParseObject("KickBoxer");
+            kickBoxer.put("name", name);
+            kickBoxer.put("kick_speed", KickSpeed);
+            kickBoxer.put("kick_power", KickPower);
+            kickBoxer.put("punch_power", PunchPower);
+            kickBoxer.put("punch_speed", PunchSpeed);
+            kickBoxer.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    if (e == null) {
 //                    Toast.makeText(MainActivity.this,  kickBoxer.get("name") + " object is saved successfully", Toast.LENGTH_LONG).show();
-                    FancyToast.makeText(MainActivity.this,kickBoxer.get("name") + " object is saved successfully",FancyToast.LENGTH_LONG,FancyToast.SUCCESS,true).show();
-                }else{
-//                    Toast.makeText(MainActivity.this,  "Kick-boxer object is not saved successfully", Toast.LENGTH_LONG).show();
-                    FancyToast.makeText(MainActivity.this,"Kick-boxer object is not saved successfully",FancyToast.LENGTH_LONG,FancyToast.ERROR,true).show();
+                        FancyToast.makeText(MainActivity.this, kickBoxer.get("name") + " object is saved successfully", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+                    }
                 }
-            }
-        });
+            });
+        }catch (Exception e){
+//                    Toast.makeText(MainActivity.this,  "Kick-boxer object is not saved successfully", Toast.LENGTH_LONG).show();
+            FancyToast.makeText(MainActivity.this, e.getMessage(), FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
+
+        }
     }
 }
