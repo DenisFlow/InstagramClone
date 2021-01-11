@@ -23,7 +23,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     EditText editName, editPunchPower, editPunchSpeed, editKickPower, editKickSpeed;
-    Button buttonSaveResult, butonGetAllData;
+    Button buttonSaveResult, butonGetAllData, buttonSwitch;
     TextView txtData;
 
     @Override
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         editPunchSpeed = findViewById(R.id.editPunchSpeed);
         buttonSaveResult = findViewById(R.id.buttonSaveResult);
         butonGetAllData = findViewById(R.id.buttonGetData);
+        buttonSwitch = findViewById(R.id.buttonSwitch);
         txtData = findViewById(R.id.textView);
 
         txtData.setOnClickListener(new View.OnClickListener() {
@@ -54,10 +55,22 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+
+        buttonSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         butonGetAllData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ParseQuery<ParseObject> parseQuery = ParseQuery.getQuery("KickBoxer");
+
+                parseQuery.whereGreaterThan("punch_power", 600);
+                parseQuery.setLimit(1);
+
                 parseQuery.findInBackground(new FindCallback<ParseObject>() {
                     @Override
                     public void done(List<ParseObject> objects, ParseException e) {
