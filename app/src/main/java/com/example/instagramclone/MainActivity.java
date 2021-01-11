@@ -23,9 +23,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText editName, editPunchPower, editPunchSpeed, editKickPower, editKickSpeed;
-    Button buttonSaveResult, butonGetAllData, buttonSwitch;
-    TextView txtData;
+    private EditText editName, editPunchPower, editPunchSpeed, editKickPower, editKickSpeed;
+    private Button buttonSaveResult, butonGetAllData, buttonSwitch;
+    private TextView txtData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         buttonSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SignUpLoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, LogInActivity.class);
                 startActivity(intent);
             }
         });
