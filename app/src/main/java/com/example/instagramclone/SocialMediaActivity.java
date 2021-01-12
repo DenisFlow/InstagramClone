@@ -1,6 +1,8 @@
 package com.example.instagramclone;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -33,5 +35,12 @@ public class SocialMediaActivity extends AppCompatActivity {
 
         tabLayout = findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager, false);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+//        menuInflater.inflate(R.menu.my_menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }
