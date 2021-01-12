@@ -21,7 +21,7 @@
 
         </activity>
         <activity android:name=".SocialMediaActivity"
-            android:theme="@style/NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
     </application>

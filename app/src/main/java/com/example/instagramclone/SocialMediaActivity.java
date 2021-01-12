@@ -3,14 +3,16 @@ package com.example.instagramclone;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
+
 public class SocialMediaActivity extends AppCompatActivity {
 
-    private androidx.appcompat.widget.Toolbar toolbar;
-
+//    private androidx.appcompat.widget.Toolbar toolbar;
+    private Toolbar toolbar;
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private TabAdapter tabAdapter;
