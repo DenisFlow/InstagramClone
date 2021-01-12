@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -29,6 +31,16 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         editUserMail = findViewById(R.id.editUserMaiSignUp);
         editUserName = findViewById(R.id.editUserNameSignUp);
         editPassword = findViewById(R.id.editPasswordSignUp);
+        editPassword.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN){
+                    onClick(buttonSignUp);
+                }
+                return false;
+            }
+
+        });
         buttonSignUp = findViewById(R.id.buttonSignUp);
         buttonLogInSwitch = findViewById(R.id.buttonLogInSwitch);
 
@@ -53,12 +65,16 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     public void fnSignUp() {
+        if (editUserName.getText().toString().equals("") || editPassword.getText().toString().equals("") || editUserMail.getText().toString().equals("")){
+            fnErrorMsg();
+            return;
+        }
         final ParseUser appUser = new ParseUser();
         appUser.setUsername(editUserName.getText().toString());
         appUser.setPassword(editPassword.getText().toString());
         appUser.setEmail(editUserMail.getText().toString());
 
-        ProgressDialog progressDialog = new ProgressDialog(this);
+        final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Signing up" + editUserName.getText().toString());
         progressDialog.show();
 
@@ -70,12 +86,27 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 //                            Intent intent = new Intent(SignUpActivity.this, WelcomeActivity.class);
 //                            startActivity(intent);
                 }else{
-                    FancyToast.makeText(SignUpActivity.this, "ERROR", FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
+                    fnErrorMsg();
                 }
             }
         });
 
         progressDialog.dismiss();
+    }
+
+    public void rootLayoutTapped(View View){
+        try {
+
+
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void fnErrorMsg(){
+        FancyToast.makeText(SignUpActivity.this, "ERROR", FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
     }
 
     public void fnLogInSwitch() {
