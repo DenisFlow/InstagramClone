@@ -8,4 +8,37 @@
     tools:context=".SharePictureTab">
 
 
+    <ImageView
+        android:id="@+id/imageViewYourImage"
+        android:layout_width="316dp"
+        android:layout_height="213dp"
+        android:src="@drawable/placeholder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Please enter a description for your image..."
+        android:inputType="textPersonName"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewYourImage" />
+
+    <Button
+        android:id="@+id/buttonShareImage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#FF9800"
+        android:text="Share Image"
+        android:textColor="#03A9F4"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>
