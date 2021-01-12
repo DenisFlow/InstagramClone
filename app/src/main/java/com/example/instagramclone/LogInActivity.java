@@ -68,6 +68,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
             public void done(ParseUser user, ParseException e) {
                 if (e == null){
                     FancyToast.makeText(LogInActivity.this, user.getUsername() + " sing in successfully!", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+                        transitionToSocialMediaActivity();
 //                            Intent intent = new Intent(LogInActivity.this, WelcomeActivity.class);
 //                            startActivity(intent);
                 }else{
@@ -93,5 +94,10 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         startActivity(intent);
     }
 
+    private void transitionToSocialMediaActivity(){
+
+        Intent intent = new Intent(LogInActivity.this, SocialMediaActivity.class);
+        startActivity(intent);
+    }
 
 }

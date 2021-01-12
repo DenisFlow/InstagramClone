@@ -48,7 +48,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         buttonLogInSwitch.setOnClickListener(this);
 
         if (ParseUser.getCurrentUser() != null){
-            ParseUser.getCurrentUser().logOut();
+            transitionToSocialMediaActivity();
+//            ParseUser.getCurrentUser().logOut();
         }
     }
 
@@ -83,6 +84,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             public void done(ParseException e) {
                 if (e == null){
                     FancyToast.makeText(SignUpActivity.this, appUser.getUsername() + " sing up successfully!", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+                    transitionToSocialMediaActivity();
 //                            Intent intent = new Intent(SignUpActivity.this, WelcomeActivity.class);
 //                            startActivity(intent);
                 }else{
@@ -111,6 +113,12 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     public void fnLogInSwitch() {
         Intent intent = new Intent(SignUpActivity.this, LogInActivity.class);
+        startActivity(intent);
+    }
+
+    private void transitionToSocialMediaActivity(){
+
+        Intent intent = new Intent(SignUpActivity.this, SocialMediaActivity.class);
         startActivity(intent);
     }
 
