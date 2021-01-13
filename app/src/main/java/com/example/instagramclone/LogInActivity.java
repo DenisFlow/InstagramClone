@@ -101,6 +101,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
         Intent intent = new Intent(LogInActivity.this, SocialMediaActivity.class);
         startActivity(intent);
+        finish();
     }
 
 }
